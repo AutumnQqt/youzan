@@ -1,0 +1,22 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: .5s ease;
+  opacity: 1;
+  transform: translateY(0)
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0.5;
+  transform: translateY(100%)
+}
+
+.fadeMask-enter-active,
+.fadeMask-leave-active {
+  transition: opacity .5s ease;
+}
+
+.fadeMask-enter,
+.fadeMask-leave-to {
+  opacity: 0;
+}

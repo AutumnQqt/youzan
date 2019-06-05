@@ -9,7 +9,9 @@ var url = {
   topLists: 'category/topList',
   rankLists: 'category/rank',
   subLists: 'category/subList',
-  searchLists: 'search/list'
+  searchLists: 'search/list',
+  // 商品详情页
+  goods: 'goods/details'
 }
 for (var key in url) {
   url[key] = host + url[key]
