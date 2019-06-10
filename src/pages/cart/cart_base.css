@@ -213,9 +213,11 @@ dd {
 }
 
 .c-orange {
-  color: #f60 !important
+  color: #f60 !important;
 }
-
+.c-orange.price {
+  margin-left: 100px;
+}
 .c-orange-dark {
   color: #f15a0c !important
 }

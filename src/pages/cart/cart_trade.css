@@ -387,11 +387,12 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .block-list>.block-item {
-  padding: 10px 10px 10px 0
+  padding: 10px 10px 10px 0;
+  width: 100%;
 }
 
 .block-list>.block-item:first-child {
-  border-top: 0px none
+  border-top: 0px none;
 }
 
 .block.block-list+.block.block-list {

@@ -11,7 +11,13 @@ var url = {
   subLists: 'category/subList',
   searchLists: 'search/list',
   // 商品详情页
-  goods: 'goods/details'
+  goods: 'goods/details',
+  // 购物车
+  cartLists:'cart/list',
+  cartAdd:'cart/add',
+  cartReduce:'cart/reduce',
+  cartMrremove:'/cart/mrremove',
+  cartRemove:'/cart/remove'
 }
 for (var key in url) {
   url[key] = host + url[key]
