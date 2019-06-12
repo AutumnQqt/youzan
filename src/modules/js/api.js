@@ -13,11 +13,18 @@ var url = {
   // 商品详情页
   goods: 'goods/details',
   // 购物车
-  cartLists:'cart/list',
-  cartAdd:'cart/add',
-  cartReduce:'cart/reduce',
-  cartMrremove:'/cart/mrremove',
-  cartRemove:'/cart/remove'
+  cartLists: 'cart/list',
+  cartAdd: 'cart/add',
+  cartReduce: 'cart/reduce',
+  cartMrremove: 'cart/mrremove',
+  cartRemove: 'cart/remove',
+  //个人地址
+  addressList: 'address/list',
+  addressAdd: 'address/add',
+  addressRemove: 'address/remove',
+  addressUpdate: 'address/update',
+  addressSetDefault: 'address/setDefault'
+
 }
 for (var key in url) {
   url[key] = host + url[key]
