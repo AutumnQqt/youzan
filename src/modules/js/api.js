@@ -1,6 +1,7 @@
 // var host = 'http://rap2api.taobao.org/app/mock/7058/'
 // var host = 'http://rap2api.taobao.org/app/mock/177712/'
-var host = 'http://yapi.demo.qunar.com/mock/69353/'
+// var host = 'http://yapi.demo.qunar.com/mock/69353/'
+var host = 'https://easy-mock.com/mock/5cee34b56cd1db2fd269b2a4/'
 var url = {
   // 首页
   hotLists: 'index/hotLists',
