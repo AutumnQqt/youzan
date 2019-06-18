@@ -18,10 +18,15 @@
   <link rel="shortcut icon" href="https://b.yzcdn.cn/v2/image/yz_fc.ico">
   <title>分类</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="app">
+  <div id="app" v-cloak>
     <div class="container with-bottom-nav" style="min-height: 667px; height: 667px;">
       <div class="custom-search js-search-bar">
         <form>
@@ -61,17 +66,17 @@
         <div class="class-category">
           <div id="scroll-main-wrap" class="main-content">
             <div id="scroll-main-content" class="js-main-content inner-content"
-              style="height: 943px; transform: translate3d(0px, 0px, 0px); " v-show='!curIndex'>
+              style="height: 943px; transform: translate3d(0px, 0px, 0px); " v-show='!curIndex' v-if="rankLists">
               <div class="hot-wrap">
                 <div class="hot-goods">
                   <div class="hot-title">
                     <p class="pull-left">热销商品榜</p>
-                    <a href="https://maijia.youzan.com/mars/rank/hotgoods" class="pull-right icon-right">更多</a>
+                    <a href="#" class="pull-right icon-right">更多</a>
                   </div>
                   <ul>
                     <li class="goods-item" v-for='(list,index) in rankLists.hotGoods' :key='list.id'>
                       <a
-                        href="https://h5.youzan.com/v2/showcase/goods?alias=27cjv5wdsb4to&amp;source=yzapp&amp;f_platform=yzapp">
+                        :href="'goods.html?id='+list.id">
                         <div class="thumb badge center-img">
                           <img :src="list.img">
                           <span class="num">{{index+1}}</span>
@@ -91,7 +96,7 @@
                 <div class="hot-shops" style="position: relative;">
                   <div class="hot-title">
                     <p class="pull-left">TOP店铺榜</p>
-                    <a href="https://maijia.youzan.com/mars/rank/hotshops" class="pull-right icon-right">更多</a>
+                    <a href="#" class="pull-right icon-right">更多</a>
                   </div>
                   <ul>
                     <li class="shop-item" v-for='(list,index) in rankLists.hotShops' :key='index'>
@@ -102,7 +107,7 @@
                       </div>
                       <ul class="shop-images">
                         <li v-for='imgsUrl in list.imgs'>
-                          <a href="https://h5.youzan.com/v2/showcase/homepage?kdt_id=10695955&amp;source=yzapp"><img
+                          <a href="#"><img
                               :src="imgsUrl"></a>
                         </li>
                       </ul>
@@ -135,7 +140,7 @@
               <h3 class="category-title"> 热门分类 </h3>
               <ul class="category-content">
                 <li class="category-item js-category-item" data-item-id="10" data-item-name="水果"
-                  v-for='list in subList.categoryList'  @click='locaSearch(list)'>
+                  v-for='list in subList.categoryList' @click='locaSearch(list)'>
                   <img :src="list.img" :alt="list.name" class="category-img">
                   <span class="category-item-name">
                     {{list.name}} </span>

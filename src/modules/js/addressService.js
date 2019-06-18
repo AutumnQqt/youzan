@@ -7,7 +7,6 @@ class Address {
     return fetch(url.addressList)
   }
   static add(data){
-    console.log(data)
     return fetch(url.addressAdd,qs.stringify(data))
   }
   static remove(id){
@@ -17,7 +16,7 @@ class Address {
     return fetch(url.addressUpdate,qs.stringify(data))
   }
   static setDefault(id){
-    return fetch(url.setDefault,qs.stringify({id}))
+    return fetch(url.addressSetDefault,qs.stringify({id}))
   }
 }
 

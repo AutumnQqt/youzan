@@ -2,13 +2,11 @@
   <div class="container-bottom-menu" style="cursor:pointer;">
     <div class="container" style="min-height: 597px;">
       <div class="block-list address-list section section-first js-no-webview-block">
-        <a
-          class="block-item js-address-item address-item"
-          v-for="list in addressList"
-        >
+        <a class="block-item js-address-item address-item" v-for="list in addressList">
+          <div class="default" :class="{'active':list.isDefault}"></div>
           <div class="address-title">{{list.name}} {{list.tel}}</div>
           <p>{{list.provinceName}}{{list.cityName}}{{list.districtName}}{{list.address}}</p>
-          <router-link class="edit" :to="{name:'edit',params:{type:'edit',instance:list}}">
+          <router-link class="edit" :to="{name:'edit',query:{type:'edit',instance:list}}">
             <img src="https://b.yzcdn.cn/v2/image/pf/icon/m.png">修改
           </router-link>
         </a>
@@ -28,23 +26,14 @@ import "./address_base.css";
 import "./address.css";
 import Address from "@/modules/js/addressService";
 export default {
-  data() {
-    return {
-      addressList: null
-    };
+  computed: {
+    addressList() {
+      return this.$store.state.lists;
+    }
   },
   created() {
-    this.getList();
-  },
-  methods: {
-    getList() {
-      Address.getList()
-        .then(res => {
-          this.addressList = res.data.lists;
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    if (!this.addressList) {
+      this.$store.dispatch("getList");
     }
   }
 };

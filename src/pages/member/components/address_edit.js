@@ -3,7 +3,7 @@ export default {
   data() {
     return {
       adressList: null,
-      type: this.$route.params.type,
+      type: this.$route.query.type,
       addressData: require('@/modules/js/address.json'),
       id: '',
       name: '',
@@ -20,7 +20,7 @@ export default {
   },
   created() {
     this.provinceData = this.addressData.list
-    let ad = this.$route.params.instance
+    let ad = this.$route.query.instance
 
     if (ad) {
       this.id = ad.id
@@ -55,28 +55,39 @@ export default {
         alert('请输入街道信息')
         return
       } else {
-        let data = { name, tel, address, cityValue, districtValue, provinceValue }
+        let pIndex = this.provinceData.findIndex(item => {
+          return item.value === provinceValue
+        })
+        let provinceName = this.provinceData[pIndex].label
+
+        let cIndex = this.cityData.findIndex(item => {
+          return item.value === cityValue
+        })
+        let cityName = this.provinceData[cIndex].label
+
+        let dIndex = this.districtData.findIndex(item => {
+          return item.value === districtValue
+        })
+        let districtName = this.provinceData[dIndex].label
+        let id = parseInt(Math.random()*100000)
+        let data = {id, name, tel, address, cityValue, districtValue, provinceValue, cityName, districtName, provinceName }
         if (this.type === 'add') {
-          Address.add(data).then(res => {
-            this.$router.go(-1)
-          })
+          this.$store.dispatch('add', data)
+          this.$router.go(-1)
         } else {
-          Address.update(data).then(res => {
-            this.$router.go(-1)
-          })
+          this.$store.dispatch('update', { data, id: this.id })
+          this.$router.go(-1)
         }
       }
     },
     setDefault() {
-      Address.setDefault(this.id)
+      this.$store.dispatch('setDefault', this.id)
+      this.$router.go(-1)
     },
     remove() {
       if (window.confirm('确认删除？')) {
-        Address.remove(this.id).then(res => {
-          this.$router.go(-1)
-        }).catch(err => {
-          alert('删除失败！')
-        })
+        this.$store.dispatch('remove', this.id)
+        this.$router.go(-1)
       }
     }
   },
